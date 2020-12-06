@@ -1,0 +1,146 @@
+﻿@using web_demo.Entities;
+
+@{
+    ViewData["Title"] = "Home Page";
+    var fromlogin = ViewData["fromlogin"] as string;
+    var user = ViewData["user"] as User;
+}
+
+<div class="text-center">
+
+
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <nav id="navbar-example3" style="background-color: #e3f2fd;" class="navbar navbar-light flex-column">
+                <nav class="nav nav-pills flex-column">
+                    <div class="card"></div>
+                    <hr />
+                    <div class="card"></div>
+                </nav>
+            </nav>
+        </div>
+        <div class="col-8">
+          
+
+
+            <div class="row" style="margin-bottom:2rem">
+                <div class="col">
+                    <div class="card" onclick="location='/students'" style="width: 9rem;">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <i class="fas fa-address-book fa-3x"></i>
+                            </div>
+
+                            <div>
+                                Enroll Student
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card" onclick="location='/academics'" style="width: 9rem;">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <i class="fas fa-user-graduate fa-3x"></i>
+
+                            </div>
+
+                            <div>
+                                Academics
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card" onclick="location='/transfer'" style="width: 9rem;">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <i class="fas fa-exchange-alt fa-3x"></i>
+
+                            </div>
+
+                            <div>
+                                Transfer
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card" onclick="location='/requests'" style="width: 9rem;">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <i class="fas fa-user-graduate fa-3x"></i>
+
+                            </div>
+
+                            <div>
+                                Requests
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="card" onclick="location='/reports'" style="width: 9rem;">
+                        <div class="card-body">
+                            <div class="text-center">
+
+
+                                <i class="fas fa-columns fa-3x"></i>
+
+                            </div>
+
+                            <div>
+                                Reports
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card" onclick="location='/setup'" style="width: 9rem;">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <i class="fas fa-user-cog fa-3x" "></i>
+
+                            </div>
+
+                            <div>
+                                Setup
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+function click() {
+  document.getElementById("demo").style.color = "red";
+}
+</script>
+
+<style>
+    .card:hover {
+        border: 2px solid rgba(0,0,0,.250);
+        border-radius: 0.5rem
+    }
+</style>

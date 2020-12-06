@@ -1,0 +1,72 @@
+﻿@using web_demo.Entities
+@model web_demo.Entities.AttendanceDetails
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+
+<h4>Create Attendance</h4>
+<hr />
+
+<form asp-action="Create">
+
+    <div class="form-group">
+        <label class="control-label">Schools:</label>
+        <select name="schoolId">
+            @foreach (var school in ViewData["schools"] as List<School>)
+            {
+                <option name value="@school.ID">@school.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Subjects: </label>
+
+        <select name="subjectId">
+            @foreach (var subject in ViewData["subjects"] as List<Subject>)
+            {
+                <option value="@subject.Id">@subject.Name</option>
+            }
+        </select>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th class="name-col">Student Name</th>
+                <th>Attendance Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in ViewData["students"] as List<Student>)
+            {
+            <tr class="student">
+                <td class="name-col">@student.FirstName @student.LastName</td>
+                <input type="hidden" name="studentId[]" value="@student.ID" />
+                <td class="attend-col"><input name="status[]" value="true" type="checkbox"></td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+
+
+
+<hr />
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

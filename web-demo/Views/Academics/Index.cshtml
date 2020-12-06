@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+
+    
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <nav id="navbar-example3" style="background-color: #e3f2fd;" class="navbar navbar-light flex-column">
+                <nav class="nav nav-pills flex-column">
+                    <div class="card"></div>
+                    <hr />
+                    <div class="card"></div>
+                </nav>
+            </nav>
+        </div>
+        <div class="col-8">
+            <div class="alert alert-primary" role="alert">
+                Academics
+            </div>
+
+            <div class="row" style="margin-bottom:2rem">
+                <div class="col">
+                    <div class="card" onclick="location='/academicassessments'" style="width: 9rem;">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <i class="fas fa-folder-open fa-3x"></i>
+                            </div>
+
+                            <div>
+                                Assessments
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card" onclick="location='/attendances'" style="width: 9rem;">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <i class="fas fa-file-alt fa-3x"></i>
+
+                            </div>
+
+                            <div>
+                                Attendance
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card" onclick="location='/performance'" style="width: 9rem;">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <i class="fas fa-chart-area fa-3x"></i>
+
+                            </div>
+
+                            <div>
+                                Performance
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+function click() {
+  document.getElementById("demo").style.color = "red";
+}
+</script>
+
+<style>
+    .card:hover{
+        border : 2px solid rgba(0,0,0,.250);
+        border-radius:0.5rem
+    }
+</style>

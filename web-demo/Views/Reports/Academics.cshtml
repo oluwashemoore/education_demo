@@ -1,0 +1,261 @@
+﻿@using web_demo.Entities
+@{
+    ViewData["Title"] = "Academics Reports";
+    var data = ViewData["data"] as string;
+}
+
+<h1>Academics</h1>
+
+<form asp-action="Academics">
+    <div class="form-group">
+        <label class="control-label">Schools:</label>
+        <select name="periodId">
+            @foreach (var period in ViewData["periods"] as List<AcademicPeriod>)
+            {
+                <option name value="@period.Id">@period.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Subjects:</label>
+        <select name="subjectId">
+            @foreach (var subject in ViewData["subjects"] as List<Subject>)
+            {
+                <option name value="@subject.Id">@subject.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Generate" class="btn btn-primary" />
+    </div>
+</form>
+
+@if (data == null)
+{
+    <div class="row">
+        <div class="col-8">
+            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+        </div>
+        <div class=" offset-1 col-3">
+            <div class="row">
+                <div class="card" style="width: 9rem; background-color:cadetblue;">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <i class=" fa-3x">31</i>
+                        </div>
+
+                        <div>
+                            Students
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <div class="row">
+                <div class="card" style="width: 9rem;background-color:darkgoldenrod;">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <i class="fa-3x">5</i>
+                        </div>
+
+                        <div>
+                            Subjects
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+else
+{
+    <div class="row">
+        <div class="col-8">
+            <div id="someChartContainer" style="height: 300px; width: 100%;"></div>
+        </div>
+        <div class=" offset-1 col-3">
+            <div class="row">
+                <div class="card" style="width: 9rem; background-color:cadetblue;">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <i class=" fa-3x">24</i>
+                        </div>
+
+                        <div>
+                            Students
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <div class="row">
+                <div class="card" style="width: 9rem;background-color:darkgoldenrod;">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <i class="fa-3x">5</i>
+                        </div>
+
+                        <div>
+                            Subjects
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+<script>
+    window.onload = function () {
+        //Attempt to get the element using document.getElementById
+        var currentChart = document.getElementById("chartContainer") != 'undefined' && document.getElementById("chartContainer") != null ? "chartContainer" : "someChartContainer";
+ 
+     
+
+
+
+        var chart = new CanvasJS.Chart(currentChart, {
+            exportEnabled: true,
+            animationEnabled: true,
+            title: {
+                text: "Performance reports"
+            },
+            subtitles: [{
+                text: "Grade distribution across subjects"
+            }],
+            axisX: {
+                title: "Subjects"
+            },
+            axisY: {
+                title: "Number of Students Filter",
+                titleFontColor: "#4F81BC",
+                lineColor: "#4F81BC",
+                labelFontColor: "#4F81BC",
+                tickColor: "#4F81BC",
+                includeZero: true
+            },
+            toolTip: {
+                shared: true
+            },
+            legend: {
+                cursor: "pointer",
+                itemclick: toggleDataSeries
+            },
+            data: [{
+                type: "column",
+                name: "A",
+                showInLegend: true,
+                yValueFormatString: "#,##0.# Units",
+                dataPoints: [
+                    { label: "Chemistry", y: 4 },
+                    { label: "Physics", y: 5 },
+                    { label: "English", y: 1 },
+                    { label: "Mathematics", y: 6 },
+                    { label: "Biology", y: 3 }
+                ]
+            },
+            {
+                type: "column",
+                name: "B",
+                axisYType: "secondary",
+                showInLegend: true,
+                yValueFormatString: "#,##0.# Units",
+                dataPoints: [
+                    { label: "Chemistry", y: 1 },
+                    { label: "Physics", y: 5 },
+                    { label: "English", y: 4 },
+                    { label: "Mathematics", y: 3 },
+                    { label: "Biology", y: 9 }
+                ]
+            },
+            {
+                type: "column",
+                name: "C",
+                axisYType: "secondary",
+                showInLegend: true,
+                yValueFormatString: "#,##0.# Units",
+                dataPoints: [
+                    { label: "Chemistry", y: 3 },
+                    { label: "Physics", y: 7 },
+                    { label: "English", y: 2 },
+                    { label: "Mathematics", y: 4 },
+                    { label: "Biology", y: 1 }
+                ]
+            },
+            {
+                type: "column",
+                name: "D",
+                axisYType: "secondary",
+                showInLegend: true,
+                yValueFormatString: "#,##0.# Units",
+                dataPoints: [
+                    { label: "Chemistry", y: 2 },
+                    { label: "Physics", y: 9 },
+                    { label: "English", y: 3 },
+                    { label: "Mathematics", y: 2 },
+                    { label: "Biology", y: 7 }
+                ]
+            },
+            {
+                type: "column",
+                name: "E",
+                axisYType: "secondary",
+                showInLegend: true,
+                yValueFormatString: "#,##0.# Units",
+                dataPoints: [
+                    { label: "Chemistry", y: 6 },
+                    { label: "Physics", y: 2 },
+                    { label: "English", y: 4 },
+                    { label: "Mathematics", y: 3 },
+                    { label: "Biology", y: 5 }
+                ]
+            },
+            {
+                type: "column",
+                name: "F",
+                axisYType: "secondary",
+                showInLegend: true,
+                yValueFormatString: "#,##0.# Units",
+                dataPoints: [
+                    { label: "Chemistry", y: 1 },
+                    { label: "Physics", y: 7 },
+                    { label: "English", y: 1 },
+                    { label: "Mathematics", y: 5 },
+                    { label: "Biology", y: 2 }
+                ]
+            }]
+        });
+        chart.render();
+
+
+        function toggleDataSeries(e) {
+            if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+            } else {
+                e.dataSeries.visible = true;
+            }
+            e.chart.render();
+        }
+
+        function toggleDataSeriesi(e) {
+            if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+            } else {
+                e.dataSeries.visible = true;
+            }
+            e.chart.render();
+        }
+
+    }
+</script>
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>

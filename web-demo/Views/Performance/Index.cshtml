@@ -1,0 +1,68 @@
+﻿@using web_demo.Entities;
+@{
+    ViewData["Title"] = "Studence performance report";
+
+}
+
+<h1>Index</h1>
+
+
+
+<h4>Studence performance report</h4>
+<hr />
+
+<form asp-action="Create">
+
+    <div class="form-group">
+        <label class="control-label">Schools:</label>
+        <select name="schoolId">
+            @foreach (var school in ViewData["schools"] as List<School>)
+            {
+                <option name value="@school.ID">@school.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Periods: </label>
+
+        <select name="subjectId">
+            @foreach (var period in ViewData["periods"] as List<AcademicPeriod>)
+            {
+                <option value="@period.Id">@period.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Students: </label>
+
+        <select name="subjectId">
+            @foreach (var student in ViewData["students"] as List<Student>)
+            {
+                <option value="@student.ID">@student.FirstName , @student.LastName </option>
+            }
+        </select>
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+
+
+
+
+
+<hr />
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

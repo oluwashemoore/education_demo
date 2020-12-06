@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewData["Title"] = "create";
+}
+    <div>
+        <p id="bg-text">Naija Academia</p>
+        <table>
+            <thead>
+                <tr>
+                    <td colspan="3">Course </td>
+                    <td rowspan="2"> Semester </td>
+                    <td rowspan="2"> Credits </td>
+                    <td colspan="2"> Grade </td>
+                </tr>
+                <tr>
+                    <td>Code </td>
+                    <td colspan="2"> Name </td>
+                    <td> Letter </td>
+                    <td> Points </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CS 225 </td>
+                    <td colspan="2">Data Structures </td>
+                    <td> Second semester 2020/2021</td>
+                    <td> 3.0 </td>
+                    <td> A </td>
+                    <td> 12.0 </td>
+                </tr>
+                <tr>
+                    <td>PHIL 105 </td>
+                    <td colspan="2">Ethics </td>
+                    <td> Second semester 2020/2021</td>
+                    <td> 3.0 </td>
+                    <td> A- </td>
+                    <td> 10.98 </td>
+                </tr>
+                <tr>
+                    <td>ECE 310 </td>
+                    <td colspan="2">Digital Signal Processing </td>
+                    <td> Second semester 2020/2021</td>
+                    <td> 3.0 </td>
+                    <td> A </td>
+                    <td> 12 </td>
+                </tr>
+                <tr>
+                    <td>CS 373 </td>
+                    <td colspan="2">Combinatorial Algorithms </td>
+                    <td> Second semester 2020/2021</td>
+                    <td> 3.0 </td>
+                    <td> B+ </td>
+                    <td> 9.99</td>
+                </tr>
+                <tr>
+                    <td>MATH 225 </td>
+                    <td colspan="2">Multi-Variable Calculus </td>
+                    <td> Second semester 2020/2021</td>
+                    <td> 3.0 </td>
+                    <td> A- </td>
+                    <td> 10.98 </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" class="footer">Total</td>
+                    <td> 15.0 </td>
+                    <td colspan="2">55.95 </td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="footer">GPA</td>
+                    <td colspan="3">3.73 / 4.0 </td>
+                </tr>
+        </table>
+    </div>
+    
+
+
+<style>
+    #background{
+    position:absolute;
+    z-index:0;
+    background:white;
+    display:block;
+    min-height:50%; 
+    min-width:50%;
+    color:yellow;
+}
+
+#content{
+    position:absolute;
+    z-index:1;
+}
+
+#bg-text
+{
+    color:lightgrey;
+    font-size:120px;
+    transform:rotate(300deg);
+    -webkit-transform:rotate(300deg);
+}
+</style>
+

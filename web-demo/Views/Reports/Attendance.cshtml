@@ -1,0 +1,110 @@
+﻿@using web_demo.Entities
+@{
+    ViewData["Title"] = "Attendance";
+    var students = ViewData["students"] as List<Student>;
+    var data = ViewData["data"] as string;
+
+}
+
+    <form asp-action="Attendance">
+        <div class="form-group">
+            <label class="control-label">Schools:</label>
+            <select name="schoolId">
+                @foreach (var school in ViewData["schools"] as List<School>)
+                {
+                    <option name value="@school.ID">@school.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Subjects: </label>
+
+            <select name="subjectId">
+                @foreach (var subject in ViewData["subjects"] as List<Subject>)
+                {
+                    <option value="@subject.Id">@subject.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">From: </label>
+
+            <input  name="From" type="date" />
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">To: </label>
+
+            <input name="To" type="date" />
+        </div>
+
+
+        
+
+        <div class="form-group">
+            <input type="submit" value="Generate" class="btn btn-primary" />
+        </div>
+    </form>
+
+@if (data == "data")
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Students
+            </th>
+            @foreach (var attendance in ViewData["attendances"] as List<Attendance>)
+            {
+                <th>
+                    @attendance.Date.ToShortDateString()
+                </th>
+            }
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in ViewData["students"] as List<Student>)
+        {
+        <tr>
+            <td>
+                @student.FirstName @student.LastName
+            </td>
+
+            @foreach (var attendance in ViewData["attendances"] as List<Attendance>)
+            {
+        <td>
+            @{
+                var studentAttendancedetails = attendance.AttendanceDetails.SingleOrDefault(x => x.StudentId == student.ID);
+                var status = studentAttendancedetails != null ? studentAttendancedetails.Status : false;
+            }
+            @if (status)
+            {
+                <i style="color:#00FF00;" class="fas fa-check"></i>
+            }
+            else
+            {
+                <i style="color:#FF0000;" class="fas fa-times"></i>
+            }
+        </td>
+            }
+
+            
+        </tr>
+        }
+        
+
+        </tbody>
+    </table>
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,59 @@
+﻿@model web_demo.Entities.AcademicAssessment
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>AcademicAssessment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input asp-for="Weight" class="form-control" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SchoolId" class="control-label"></label>
+                <select asp-for="SchoolId" class="form-control" asp-items="ViewBag.SchoolId"></select>
+                <span asp-validation-for="SchoolId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SubjectId" class="control-label"></label>
+                <select asp-for="SubjectId" class="form-control" asp-items="ViewBag.SubjectId"></select>
+                <span asp-validation-for="SubjectId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssessmentDate" class="control-label"></label>
+                <input asp-for="AssessmentDate" class="form-control" />
+                <span asp-validation-for="AssessmentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AcademicPeriodId" class="control-label"></label>
+                <select asp-for="AcademicPeriodId" class="form-control" asp-items="ViewBag.AcademicPeriodId"></select>
+                <span asp-validation-for="AcademicPeriodId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssessmentTypeId" class="control-label"></label>
+                <select asp-for="AssessmentTypeId" class="form-control" asp-items="ViewBag.AssessmentTypeId"></select>
+                <span asp-validation-for="AssessmentTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
